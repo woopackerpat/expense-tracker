@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TransactionContext } from '../contexts/TransactionContext'
 import Transaction from './Transaction'
 
 function TransactionList() {
+
+  const {transactions} = useContext(TransactionContext)
+
   return (
     <ul className='list-group' >
-        <Transaction />
-        <Transaction />
-        <Transaction />
-        <Transaction />
+      {transactions.map(el => <Transaction key = {el.id} transaction = {el}/>)}
+    
     </ul>
   )
 }
